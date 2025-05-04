@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.2.1
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: May 04, 2025 at 09:59 AM
+- Server version: 10.4.32-MariaDB
+- PHP Version: 8.2.12
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="av" collation="latin1_swedish_ci" charset="latin1">
+            <pma:table name="contact_us">
+                CREATE TABLE `contact_us` (
+                  `id` int(3) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(50) NOT NULL,
+                  `mail` varchar(50) NOT NULL,
+                  `sub` varchar(50) NOT NULL,
+                  `msg` varchar(50) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+            </pma:table>
+            <pma:table name="form">
+                CREATE TABLE `form` (
+                  `id` int(3) NOT NULL AUTO_INCREMENT,
+                  `uname` varchar(50) NOT NULL,
+                  `uclass` varchar(50) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+            </pma:table>
+            <pma:table name="orders">
+                CREATE TABLE `orders` (
+                  `order_id` int(10) NOT NULL AUTO_INCREMENT,
+                  `product` varchar(500) NOT NULL,
+                  `pdprice` int(5) NOT NULL,
+                  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+                  `total_amount` int(4) NOT NULL,
+                  `order_date` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+                  `status` varchar(20) NOT NULL,
+                  `quantity` int(11) NOT NULL,
+                  PRIMARY KEY (`order_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+            </pma:table>
+            <pma:table name="order_customers">
+                CREATE TABLE `order_customers` (
+                  `order_id` int(10) NOT NULL AUTO_INCREMENT,
+                  `name` varchar(100) DEFAULT NULL,
+                  `email` varchar(100) DEFAULT NULL,
+                  `phone` varchar(20) DEFAULT NULL,
+                  `address` text DEFAULT NULL,
+                  `created_at` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6),
+                  PRIMARY KEY (`order_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+            </pma:table>
+            <pma:table name="order_items">
+                CREATE TABLE `order_items` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `order_id` int(11) NOT NULL,
+                  `product_id` int(11) NOT NULL,
+                  `price` decimal(10,2) NOT NULL,
+                  `quantity` int(11) NOT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+            </pma:table>
+            <pma:table name="product">
+                CREATE TABLE `product` (
+                  `id` int(3) NOT NULL AUTO_INCREMENT,
+                  `product_id` int(3) NOT NULL,
+                  `name` varchar(50) NOT NULL,
+                  `price` int(5) NOT NULL,
+                  `image_url` varchar(500) NOT NULL,
+                  `description` varchar(500) NOT NULL,
+                  `stock` int(11) NOT NULL,
+                  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+                  `category` enum(&#039;Phone Cases&#039;,&#039;Cables&#039;,&#039;Chargers&#039;,&#039;Audio Accessories&#039;) DEFAULT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'av'
+    -->
+    <database name="av">
+        <!-- Table contact_us -->
+        <table name="contact_us">
+            <column name="id">1</column>
+            <column name="name">Jora Singh</column>
+            <column name="mail">gy@gmail.com</column>
+            <column name="sub">appreciation</column>
+            <column name="msg">Good Work</column>
+        </table>
+        <!-- Table form -->
+        <table name="form">
+            <column name="id">20</column>
+            <column name="uname">zora</column>
+            <column name="uclass">bca</column>
+        </table>
+        <table name="form">
+            <column name="id">21</column>
+            <column name="uname"></column>
+            <column name="uclass"></column>
+        </table>
+        <table name="form">
+            <column name="id">22</column>
+            <column name="uname"></column>
+            <column name="uclass"></column>
+        </table>
+        <!-- Table orders -->
+        <table name="orders">
+            <column name="order_id">1</column>
+            <column name="product">Data Cables </column>
+            <column name="pdprice">249</column>
+            <column name="created_at">2025-04-20 16:02:22.215799</column>
+            <column name="total_amount">249</column>
+            <column name="order_date">2025-04-20 16:02:22.215799</column>
+            <column name="status">Delivered</column>
+            <column name="quantity">1</column>
+        </table>
+        <table name="orders">
+            <column name="order_id">2</column>
+            <column name="product">Data Cables </column>
+            <column name="pdprice">249</column>
+            <column name="created_at">2025-04-20 16:03:20.626273</column>
+            <column name="total_amount">249</column>
+            <column name="order_date">2025-04-20 16:03:20.626273</column>
+            <column name="status">Pending</column>
+            <column name="quantity">1</column>
+        </table>
+        <table name="orders">
+            <column name="order_id">4</column>
+            <column name="product">Bluetooth Earbuds (x1)</column>
+            <column name="pdprice">1299</column>
+            <column name="created_at">2025-04-20 16:02:41.443640</column>
+            <column name="total_amount">1299</column>
+            <column name="order_date">2025-04-20 16:02:41.443640</column>
+            <column name="status">Shipped</column>
+            <column name="quantity">1</column>
+        </table>
+        <table name="orders">
+            <column name="order_id">5</column>
+            <column name="product">Wireless Charger (x1)</column>
+            <column name="pdprice">1499</column>
+            <column name="created_at">2025-04-20 16:03:22.829260</column>
+            <column name="total_amount">1499</column>
+            <column name="order_date">2025-04-20 16:03:22.829260</column>
+            <column name="status">Pending</column>
+            <column name="quantity">1</column>
+        </table>
+        <table name="orders">
+            <column name="order_id">6</column>
+            <column name="product">Bluetooth Earbuds (x1)</column>
+            <column name="pdprice">1299</column>
+            <column name="created_at">2025-04-20 17:56:47.562486</column>
+            <column name="total_amount">1299</column>
+            <column name="order_date">2025-04-20 00:00:00.000000</column>
+            <column name="status"></column>
+            <column name="quantity">0</column>
+        </table>
+        <!-- Table order_customers -->
+        <table name="order_customers">
+            <column name="order_id">1</column>
+            <column name="name">Zora Singh</column>
+            <column name="email">dff@mail.com</column>
+            <column name="phone">8544468712</column>
+            <column name="address">Jalandhar</column>
+            <column name="created_at">2025-04-20 13:26:14.713516</column>
+        </table>
+        <table name="order_customers">
+            <column name="order_id">2</column>
+            <column name="name">Mohit Chopra</column>
+            <column name="email">mohit@mail.com</column>
+            <column name="phone">7585548444</column>
+            <column name="address">Maqsudan</column>
+            <column name="created_at">2025-04-20 14:39:06.038600</column>
+        </table>
+        <table name="order_customers">
+            <column name="order_id">4</column>
+            <column name="name">Jora</column>
+            <column name="email">gy@gmail.com</column>
+            <column name="phone">8544468712</column>
+            <column name="address">Ludhiana</column>
+            <column name="created_at">2025-04-20 15:33:15.258236</column>
+        </table>
+        <table name="order_customers">
+            <column name="order_id">5</column>
+            <column name="name">Love</column>
+            <column name="email">love@mail.com</column>
+            <column name="phone">9230845808</column>
+            <column name="address">Patiala</column>
+            <column name="created_at">2025-04-20 16:00:24.705081</column>
+        </table>
+        <table name="order_customers">
+            <column name="order_id">6</column>
+            <column name="name">Jora Singh</column>
+            <column name="email">dff@mail.com</column>
+            <column name="phone">9230845808</column>
+            <column name="address">Jalandhar</column>
+            <column name="created_at">2025-04-20 17:56:02.181276</column>
+        </table>
+        <!-- Table order_items -->
+        <table name="order_items">
+            <column name="id">1</column>
+            <column name="order_id">1</column>
+            <column name="product_id">1</column>
+            <column name="price">149.00</column>
+            <column name="quantity">1</column>
+        </table>
+        <table name="order_items">
+            <column name="id">2</column>
+            <column name="order_id">2</column>
+            <column name="product_id">3</column>
+            <column name="price">1299.00</column>
+            <column name="quantity">1</column>
+        </table>
+        <!-- Table product -->
+        <table name="product">
+            <column name="id">1</column>
+            <column name="product_id">1</column>
+            <column name="name">Back Cover</column>
+            <column name="price">149</column>
+            <column name="image_url">http://localhost/mobile_cart/js/images/cover.jpg</column>
+            <column name="description">stylish back cover for Iphones</column>
+            <column name="stock">10</column>
+            <column name="created_at">2025-04-05 16:42:30</column>
+            <column name="category">Phone Cases</column>
+        </table>
+        <table name="product">
+            <column name="id">2</column>
+            <column name="product_id">2</column>
+            <column name="name">Wireless Charger</column>
+            <column name="price">1499</column>
+            <column name="image_url">http://localhost/mobile_cart/js/images/wireless_charger.jpeg</column>
+            <column name="description">wireless charger is a type of wireless power transfer. It uses electromagnetic induction to provide electricity to portable devices.</column>
+            <column name="stock">10</column>
+            <column name="created_at">2025-04-05 16:42:30</column>
+            <column name="category">Chargers</column>
+        </table>
+        <table name="product">
+            <column name="id">3</column>
+            <column name="product_id">3</column>
+            <column name="name">Bluetooth Earbuds</column>
+            <column name="price">1299</column>
+            <column name="image_url">http://localhost/mobile_cart/js/images/bt.jpeg</column>
+            <column name="description">Bluetooth Earbuds are portable speakers that fit inside people&#039;s ears.</column>
+            <column name="stock">10</column>
+            <column name="created_at">2025-04-05 16:42:30</column>
+            <column name="category">Audio Accessories</column>
+        </table>
+        <table name="product">
+            <column name="id">4</column>
+            <column name="product_id">4</column>
+            <column name="name">Data Cables</column>
+            <column name="price">249</column>
+            <column name="image_url">
+http://localhost/mobile_cart/js/images/cable.jpeg</column>
+            <column name="description">Multi-purposes data cables for various ports.</column>
+            <column name="stock">10</column>
+            <column name="created_at">2025-04-05 16:42:30</column>
+            <column name="category">Cables</column>
+        </table>
+    </database>
+</pma_xml_export>
