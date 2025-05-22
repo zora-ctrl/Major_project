@@ -5,9 +5,9 @@ require 'db1.php'; // Database connection
 
 // Fetch orders (assuming product name is directly in orders table now)
 try {
-    $query = "SELECT order_id, order_date, total_amount, product, quantity 
+    $query = "SELECT order_id, created_at, total_amount, product, quantity 
               FROM orders 
-              ORDER BY order_date DESC, order_id DESC";
+              ORDER BY created_at DESC, order_id DESC";
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -43,7 +43,7 @@ try {
         if (!empty($orders)) {
             $current_order_id = null;
             $product_list = [];
-            $order_date = '';
+            $created_at = '';
             $total_amount = 0;
 
             foreach ($orders as $order) {
@@ -54,11 +54,11 @@ try {
                         foreach ($product_list as $product) {
                             echo "<li>{$product['name']}</li>";
                         }
-                        echo "</ul></td><td>{$order_date}</td><td>" . number_format($total_amount, 2) . "</td></tr>";
+                        echo "</ul></td><td>{$created_at}</td><td>" . number_format($total_amount, 2) . "</td></tr>";
                     }
                     // Start new order
                     $current_order_id = $order['order_id'];
-                    $order_date = $order['order_date'];
+                    $created_at = $order['created_at'];
                     $total_amount = $order['total_amount'];
                     $product_list = [];
                 }
@@ -71,7 +71,7 @@ try {
                 foreach ($product_list as $product) {
                     echo "<li>{$product['name']}</li>";
                 }
-                echo "</ul></td><td>{$order_date}</td><td>" . number_format($total_amount, 2) . "</td></tr>";
+                echo "</ul></td><td>{$created_at}</td><td>" . number_format($total_amount, 2) . "</td></tr>";
             }
         } else {
             echo "<tr><td colspan='4' class='text-center'>No orders found.</td></tr>";
